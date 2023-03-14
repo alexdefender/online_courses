@@ -1,7 +1,24 @@
 {
   "compilerOptions": {
+    "target": "ES6",
+    "experimentalDecorators": true,
+    "module": "commonjs",
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "./",
     "paths": {
-      "@/*": ["./src/*"]
+      "@actions/*": ["src/actions/*"],
+      "@actions": ["src/actions/index.js"],
+      "@components/*": ["src/components/*"],
+      "@containers/*": ["src/containers/*"],
+      "@layouts/*": ["src/layouts/*"],
+      "@constants/*": ["src/constants/*"],
+      "@constants": ["src/constants/index.js"],
+      "@services/*": ["src/services/*"],
+      "@reducers": ["src/reducers/index.js"],
+      "@utils/*": ["src/utils/*"],
+      "@utils": ["src/utils/index.js"],
     }
-  }
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "build", "coverage", "report"]
 }

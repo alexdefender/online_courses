@@ -1,0 +1,10 @@
+{
+  "COURSES": {
+    "TITLE": "Online Courses",
+    "DESCRIPTION": "Online courses for everyone"
+  },
+  "COURSE": {
+    "TITLE": "Online course details",
+    "DESCRIPTION": "Online course details"
+  }
+}
