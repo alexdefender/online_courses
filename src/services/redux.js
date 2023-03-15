@@ -4,6 +4,6 @@ import { composeWithDevTools } from '@redux-devtools/extension';
 
 import reducer from '@reducers';
 
-const redux = () => createStore(reducer, composeWithDevTools(applyMiddleware(thunk)));
+const redux = (initialState = {}) => createStore(reducer, initialState, composeWithDevTools(applyMiddleware(thunk)));
 
 export default redux;

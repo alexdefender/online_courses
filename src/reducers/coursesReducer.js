@@ -1,5 +1,6 @@
 import { COURSES } from '@actions';
-import { getLoadingState } from '@utils/store';
+import { getLoadingState, getReadyState } from '@utils/store';
+import { performCoursesList } from '@utils/api/course';
 
 const initialState = {
   list: {},
@@ -11,6 +12,12 @@ const coursesReducer = (state = initialState, action) => {
       return {
         ...state,
         list: getLoadingState(state.list),
+      };
+
+    case COURSES.GET_SUCCESS:
+      return {
+        ...state,
+        list: getReadyState(performCoursesList(action.data)),
       };
 
     default:

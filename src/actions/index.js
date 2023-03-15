@@ -6,4 +6,5 @@ export const COURSES = {
 export const COURSE = {
   GET_START: 'COURSE.GET_START',
   GET_SUCCESS: 'COURSE.GET_SUCCESS',
-}
+  RESET: 'COURSE.RESET',
+};
