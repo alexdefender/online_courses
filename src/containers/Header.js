@@ -1,10 +1,13 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-const Header = (props) => {
-  return <div>Header</div>;
-};
+import { Toolbar, AppBar, Logo } from '@components';
 
-Header.propTypes = {};
+const Header = () => (
+  <AppBar>
+    <Toolbar>
+      <Logo />
+    </Toolbar>
+  </AppBar>
+);
 
 export default Header;

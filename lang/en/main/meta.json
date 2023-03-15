@@ -1,10 +1,11 @@
 {
+  "DEFAULT": "Online Courses - TMCourses",
   "COURSES": {
-    "TITLE": "Online Courses",
+    "TITLE": "Online Courses - TMCourses",
     "DESCRIPTION": "Online courses for everyone"
   },
   "COURSE": {
-    "TITLE": "Online course details",
+    "TITLE": "Online course details - TMCourses",
     "DESCRIPTION": "Online course details"
   }
 }

@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 
 const MyHead = ({ id, title, description, image, keywords }) => {
   const { t } = useTranslation();
-  const getDefaultMeta = (prop) => (id ? t(`META.${id}.${prop}`) : 'Courses');
+  const getDefaultMeta = (prop) => (id ? t(`META.${id}.${prop}`) : t('META.DEFAULT'));
 
   const _title = title || getDefaultMeta('TITLE');
   const _description = description || getDefaultMeta('DESCRIPTION');
