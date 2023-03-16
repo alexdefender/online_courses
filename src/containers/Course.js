@@ -5,8 +5,9 @@ import { connect } from 'react-redux';
 
 import { getCourse } from '@actions/courseActions';
 import { hasData, getData } from '@utils/store';
+import { CourseDetails } from '@components';
 
-const CourseDetails = ({ isHasData, data, dispatch }) => {
+const CourseDetailsContainer = ({ isHasData, data, dispatch }) => {
   const router = useRouter();
   const { id } = router.query;
 
@@ -14,10 +15,10 @@ const CourseDetails = ({ isHasData, data, dispatch }) => {
     dispatch(getCourse(id));
   }, []);
 
-  return 'CoursesDetails';
+  return <CourseDetails data={data} loading={!isHasData} />;
 };
 
-CourseDetails.propTypes = {
+CourseDetailsContainer.propTypes = {
   dispatch: PropTypes.func.isRequired,
   isHasData: PropTypes.bool.isRequired,
   data: PropTypes.object.isRequired,
@@ -28,4 +29,4 @@ const mapStateToProps = ({ course: { data } }) => ({
   data: getData(data),
 });
 
-export default connect(mapStateToProps)(CourseDetails);
+export default connect(mapStateToProps)(CourseDetailsContainer);

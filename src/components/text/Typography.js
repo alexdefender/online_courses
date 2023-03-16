@@ -70,9 +70,10 @@ export const getWrap = ({ subtitle1, subtitle2, p, body1, h6, h5, h4, h3, h2, h1
 
 const StyledTypography = styled(Typography)`
   color: ${({ theme }) => theme.color};
+  font-weight: ${({ theme }) => theme.bold};
 `;
 
-const TypographyComponent = ({ parent, color, align, dangerouslySetInnerHTML, children, ...props }) => {
+const TypographyComponent = ({ parent, color, align, bold, dangerouslySetInnerHTML, children, ...props }) => {
   const variant = getTypoVariant(props);
   const wrap = getWrap(props, parent);
 
@@ -82,7 +83,7 @@ const TypographyComponent = ({ parent, color, align, dangerouslySetInnerHTML, ch
       component={wrap}
       align={align}
       dangerouslySetInnerHTML={dangerouslySetInnerHTML}
-      theme={{ color }}
+      theme={{ color, bold }}
     >
       {children}
     </StyledTypography>
@@ -93,6 +94,7 @@ TypographyComponent.propTypes = {
   parent: PropTypes.string,
   color: PropTypes.string,
   align: PropTypes.string,
+  bold: PropTypes.number,
   dangerouslySetInnerHTML: PropTypes.object,
   children: PropTypes.node,
 };

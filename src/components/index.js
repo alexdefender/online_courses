@@ -8,3 +8,4 @@ export { default as Text } from './text/Text';
 export { default as SchoolIcon } from './icons/SchoolIcon';
 
 export { default as CoursesList } from './CoursesList';
+export { default as CourseDetails } from './CourseDetails';

@@ -1,5 +1,5 @@
 import { COURSE } from '@actions';
-import { getLoadingState } from '@utils/store';
+import { getLoadingState, getReadyState } from '@utils/store';
 import { performCourse } from '@utils/api/course';
 
 const initialState = {
@@ -17,7 +17,7 @@ const courseReducer = (state = initialState, action) => {
     case COURSE.GET_SUCCESS:
       return {
         ...state,
-        data: performCourse(action.data),
+        data: getReadyState(performCourse(action.data)),
       };
 
     case COURSE.RESET:
