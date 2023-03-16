@@ -4,11 +4,13 @@ import { connect } from 'react-redux';
 
 import { getCourses } from '@actions/courseActions';
 import { hasData, getData } from '@utils/store';
-import { CoursesList } from '@components'
+import { CoursesList } from '@components';
 
 const Courses = ({ isHasData, list, dispatch }) => {
   useEffect(() => {
-    dispatch(getCourses());
+    if (!isHasData) {
+      dispatch(getCourses());
+    }
   }, []);
 
   return <CoursesList list={list} loading={!isHasData} />;

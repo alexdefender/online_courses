@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
 import { connect } from 'react-redux';
 
-import { getCourse } from '@actions/courseActions';
+import { getCourse, resetCourse } from '@actions/courseActions';
 import { hasData, getData } from '@utils/store';
 import { CourseDetails } from '@components';
 
@@ -13,6 +13,10 @@ const CourseDetailsContainer = ({ isHasData, data, dispatch }) => {
 
   useEffect(() => {
     dispatch(getCourse(id));
+
+    return () => {
+      dispatch(resetCourse());
+    };
   }, []);
 
   return <CourseDetails data={data} loading={!isHasData} />;

@@ -1,5 +1,5 @@
 const ROUTES = {
-  COURSES: '/',
+  HOME: '/',
   COURSE: (id) => `/course/${id}`,
   COURSE_PAGE: '/course/[id]',
 };
