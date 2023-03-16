@@ -19,6 +19,7 @@
       "@reducers": ["src/reducers/index.js"],
       "@utils/*": ["src/utils/*"],
       "@utils": ["src/utils/index.js"],
+      "@theme": ["src/theme/index.js"]
     }
   },
   "include": ["src"],
