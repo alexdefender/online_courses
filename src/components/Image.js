@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 
-const ImgRoot = styled.img`
+const StyledImg = styled.img`
   width: ${({ theme }) => theme.width};
   height: ${({ theme }) => theme.height || theme.width};
 `;
 
-const Image = ({ url, alt, width, height }) => <ImgRoot src={url} alt={alt} theme={{ width, height }} />;
+const Image = ({ url, alt, width, height }) => <StyledImg src={url} alt={alt} theme={{ width, height }} />;
 
 Image.defaultProps = {
   alt: '',

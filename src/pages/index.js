@@ -5,17 +5,15 @@ import CoursesContainer from '@containers/Courses';
 import { META_ID } from '@constants';
 import Head from './_head';
 
-const HomePage = () => {
-  return (
-    <Page>
-      <Head id={META_ID.COURSES} />
+const HomePage = () => (
+  <Page>
+    <Head id={META_ID.COURSES} />
 
-      <BaseLayout>
-        <CoursesContainer />
-      </BaseLayout>
-    </Page>
-  );
-};
+    <BaseLayout>
+      <CoursesContainer />
+    </BaseLayout>
+  </Page>
+);
 
 HomePage.getInitialProps = async () => {
   return {};

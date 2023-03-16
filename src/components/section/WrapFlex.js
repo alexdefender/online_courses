@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 
-const DivRoot = styled.div`
+const StyledDiv = styled.div`
   display: flex;
   gap: ${({ theme }) => theme.gap};
   flex-direction: ${({ theme }) => theme.direction};
@@ -15,7 +15,7 @@ const DivRoot = styled.div`
 const WrapFlex = ({ gap, direction, justify, align, flex, wrap, children }) => {
   const customTheme = { gap, direction, justify, align, wrap, flex };
 
-  return <DivRoot theme={customTheme}>{children}</DivRoot>;
+  return <StyledDiv theme={customTheme}>{children}</StyledDiv>;
 };
 
 WrapFlex.propTypes = {

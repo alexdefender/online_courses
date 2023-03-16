@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { getCourse } from '@actions/courseActions';
 import { hasData, getData } from '@utils/store';
 
-const CoursesDetails = ({ isHasData, data, dispatch }) => {
+const CourseDetails = ({ isHasData, data, dispatch }) => {
   const router = useRouter();
   const { id } = router.query;
 
@@ -17,7 +17,7 @@ const CoursesDetails = ({ isHasData, data, dispatch }) => {
   return 'CoursesDetails';
 };
 
-CoursesDetails.propTypes = {
+CourseDetails.propTypes = {
   dispatch: PropTypes.func.isRequired,
   isHasData: PropTypes.bool.isRequired,
   data: PropTypes.object.isRequired,
@@ -28,4 +28,4 @@ const mapStateToProps = ({ course: { data } }) => ({
   data: getData(data),
 });
 
-export default connect(mapStateToProps)(CoursesDetails);
+export default connect(mapStateToProps)(CourseDetails);
