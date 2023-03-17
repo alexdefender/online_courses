@@ -1,6 +1,8 @@
 import React from 'react';
 
-import { Toolbar, AppBar, Logo } from '@components';
+import AppBar from './AppBar';
+import Toolbar from './Toolbar';
+import Logo from '../Logo';
 
 const Header = () => (
   <AppBar>

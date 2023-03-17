@@ -8,6 +8,7 @@ import Video from '../../values/Video';
 
 const LessonPreview = ({ id, openId, title, isLocked, videoLink, onOpen, VideoProps }) => {
   const isOpen = id === openId;
+  const titleColor = isOpen ? theme.palette.primary.main : theme.palette.text.primary;
   let content = null;
 
   if (isOpen && isLocked) {
@@ -17,7 +18,11 @@ const LessonPreview = ({ id, openId, title, isLocked, videoLink, onOpen, VideoPr
   }
 
   return (
-    <DetailsCollapsable onChange={(e, expanded) => onOpen({ id, isLocked, expanded })} {...{ id, openId, title }}>
+    <DetailsCollapsable
+      TitleProps={{ color: titleColor }}
+      onChange={(e, expanded) => onOpen({ id, isLocked, expanded })}
+      {...{ id, openId, title }}
+    >
       {content}
     </DetailsCollapsable>
   );

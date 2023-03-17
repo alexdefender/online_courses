@@ -1,8 +1,8 @@
 import { COURSE, LESSON } from '@constants/fields';
 
-const getCourseImageLink = (previewLink) => `${previewLink}/cover.webp`;
+const getCourseImageLink = (previewLink) => (previewLink ? `${previewLink}/cover.webp` : null);
 
-const getLessonImageLink = (previewLink, order) => `${previewLink}/${order}.webp`;
+const getLessonImageLink = (previewLink, order) => (previewLink ? `${previewLink}/lesson-${order}.webp` : null);
 
 const isLockedLesson = (status) => status === 'locked';
 

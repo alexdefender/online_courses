@@ -1,8 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
-import Header from '@containers/Header';
-import { Container } from '@components';
+import { Container, Header } from '@components';
 
 const BaseLayout = ({ children }) => (
   <Fragment>

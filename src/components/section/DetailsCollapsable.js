@@ -7,21 +7,26 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import Text from '../text/Text';
 import ExpandMoreIcon from '../icons/ExpandMoreIcon';
 
-const DetailsCollapsable = ({ id, openId, title, children, onChange }) => (
+const DetailsCollapsable = ({ id, openId, title, TitleProps, children, onChange }) => (
   <Accordion disableGutters expanded={id === openId} onChange={onChange}>
     <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls={`${id}-content`} id={`${id}-header`}>
-      <Text tid={title} />
+      <Text tid={title} {...TitleProps} />
     </AccordionSummary>
 
     <AccordionDetails>{children}</AccordionDetails>
   </Accordion>
 );
 
+DetailsCollapsable.defaultProps = {
+  TitleProps: {},
+};
+
 DetailsCollapsable.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
 
+  TitleProps: PropTypes.object,
   children: PropTypes.node,
   openId: PropTypes.string,
 };

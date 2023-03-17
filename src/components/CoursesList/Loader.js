@@ -1,11 +1,11 @@
 import React from 'react';
 
 import CourseCard from './CourseCard';
-import WrapFlex from '../section/WrapFlex';
+import Wrap from './Wrap';
 import Skeleton from '../loaders/Skeleton';
 
 const CoursesListLoader = () => (
-  <WrapFlex gap="16px" wrap="wrap">
+  <Wrap>
     {Array(4)
       .fill()
       .map((v, i) => (
@@ -17,7 +17,7 @@ const CoursesListLoader = () => (
           <Skeleton variant="rounded" width="40%" height={24} />
         </CourseCard>
       ))}
-  </WrapFlex>
+  </Wrap>
 );
 
 export default CoursesListLoader;

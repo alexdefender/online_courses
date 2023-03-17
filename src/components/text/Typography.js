@@ -68,12 +68,21 @@ export const getWrap = ({ subtitle1, subtitle2, p, body1, h6, h5, h4, h3, h2, h1
   return 'span';
 };
 
-const StyledTypography = styled(Typography)`
-  color: ${({ theme }) => theme.color};
-  font-weight: ${({ theme }) => theme.bold};
-`;
+const StyledTypography = styled(Typography)(({ color, bold }) => ({
+  color,
+  fontWeight: bold,
+}));
 
-const TypographyComponent = ({ parent, color, align, bold, dangerouslySetInnerHTML, children, ...props }) => {
+const TypographyComponent = ({
+  parent,
+  color,
+  align,
+  bold,
+  dangerouslySetInnerHTML,
+  className,
+  children,
+  ...props
+}) => {
   const variant = getTypoVariant(props);
   const wrap = getWrap(props, parent);
 
@@ -83,7 +92,7 @@ const TypographyComponent = ({ parent, color, align, bold, dangerouslySetInnerHT
       component={wrap}
       align={align}
       dangerouslySetInnerHTML={dangerouslySetInnerHTML}
-      theme={{ color, bold }}
+      {...{ align, color, bold, className }}
     >
       {children}
     </StyledTypography>

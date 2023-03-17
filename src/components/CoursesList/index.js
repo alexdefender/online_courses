@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import WrapFlex from '../section/WrapFlex';
+import Wrap from './Wrap';
 import CoursePreview from './Course';
 import Loader from './Loader';
 
@@ -11,11 +11,11 @@ const CoursesList = ({ list, loading }) => {
   }
 
   return (
-    <WrapFlex gap="16px" wrap="wrap">
+    <Wrap>
       {list.map((course) => (
         <CoursePreview key={course.id} {...course} />
       ))}
-    </WrapFlex>
+    </Wrap>
   );
 };
 

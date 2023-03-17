@@ -7,6 +7,7 @@ import SafeText from '../text/SafeText';
 import Loader from './Loader';
 import LessonsList from './LessonsList';
 import Video from '../values/Video';
+import Divider from '../Divider';
 
 const CourseDetails = ({ data, loading, progress, onProgress }) => {
   if (loading) {
@@ -29,13 +30,14 @@ const CourseDetails = ({ data, loading, progress, onProgress }) => {
   };
 
   return (
-    <WrapFlex gap="16px" direction="column">
+    <WrapFlex gap={16} direction="column">
       <SafeText content={title} h4 />
       <Video url={videoLink} hasSpeed timeToStart={videoPlayedSeconds} onProgress={onVideoProgress} />
       <CourseInfo title="COURSE.DESCRIPTION" content={description} />
       <CourseInfo title="COURSE.RATING" content={rating} />
       <CourseInfo title="COURSE.LESSONS_COUNT" content={lessonsCount} />
       <CourseInfo title="COURSE.SKILLS" content={skills} />
+      <Divider />
       <LessonsList list={lessons} progress={progress} onLessonProgress={onLessonProgress} />
     </WrapFlex>
   );

@@ -12,7 +12,7 @@ const CourseInfo = ({ title, content }) => {
   }
 
   return (
-    <WrapFlex gap="4px" align="center" wrap="wrap">
+    <WrapFlex gap={4} align="center" wrap="wrap">
       <Text tid={title} body1 parent="span" bold={600} />
 
       {Array.isArray(content) ? (

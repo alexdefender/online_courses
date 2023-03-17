@@ -9,13 +9,13 @@ import SchoolIcon from './icons/SchoolIcon';
 import Text from './text/Text';
 import LinkWrap from './LinkWrap';
 
-const StyledSchoolIcon = styled(SchoolIcon)`
-  fill: ${() => theme.palette.common.white};
-`;
+const StyledSchoolIcon = styled(SchoolIcon)({
+  fill: theme.palette.common.white,
+});
 
 const Logo = () => (
   <LinkWrap href={ROUTES.HOME}>
-    <WrapFlex gap="16px" align="center">
+    <WrapFlex gap={16} align="center">
       <StyledSchoolIcon fontSize="large" />
       <Text tid="MAIN.APP_NAME" h5 color={theme.palette.common.white} />
     </WrapFlex>

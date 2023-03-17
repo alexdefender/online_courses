@@ -9,7 +9,7 @@ const StyledCard = styled(Card)(({ theme }) => ({
   gap: '8px',
   flexDirection: 'column',
   width: '100%',
-  maxWidth: 500,
+  boxSizing: 'border-box',
   padding: theme.spacing(2),
 }));
 

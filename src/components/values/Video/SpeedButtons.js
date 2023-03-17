@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import WrapFlex from '../../section/WrapFlex';
@@ -16,7 +16,7 @@ const VideoSpeedButtons = ({ active, onClick }) => {
   const getTypoVariant = (value) => (active === value ? 'contained' : 'outlined');
 
   return (
-    <WrapFlex gap="8px" align="center" wrap="wrap">
+    <WrapFlex gap={8} align="center" wrap="wrap">
       <Text tid="COMMON.SPEED" bold={600} body1 />
 
       {speeds.map((s) => (

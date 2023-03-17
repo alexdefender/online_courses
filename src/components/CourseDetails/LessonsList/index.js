@@ -24,7 +24,7 @@ const LessonsList = ({ list, progress, onLessonProgress }) => {
   };
 
   return (
-    <WrapFlex gap="16px" direction="column">
+    <WrapFlex gap={16} direction="column">
       <Text tid="LESSON.LESSONS" h5 />
 
       {list.map((item) => (
