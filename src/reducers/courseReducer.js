@@ -4,6 +4,7 @@ import { performCourse } from '@utils/api/course';
 
 const initialState = {
   data: {},
+  progress: {},
 };
 
 const courseReducer = (state = initialState, action) => {
@@ -18,6 +19,12 @@ const courseReducer = (state = initialState, action) => {
       return {
         ...state,
         data: getReadyState(performCourse(action.data)),
+      };
+
+    case COURSE.SET_PROGRESS:
+      return {
+        ...state,
+        progress: action.data,
       };
 
     case COURSE.RESET:

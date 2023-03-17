@@ -8,3 +8,7 @@ export const META_ID = {
   COURSES: 'COURSES',
   COURSE: 'COURSE',
 }
+
+export const LOCAL_STORAGE_KEYS = {
+  COURSE_PROGRESS: 'courseProgress'
+}

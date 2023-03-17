@@ -5,7 +5,7 @@ import ROUTES from '@constants/routes';
 
 import CourseCard from './CourseCard';
 import SafeText from '../text/SafeText';
-import Image from '../Image';
+import Image from '../values/Image';
 import LinkWrap from '../LinkWrap';
 import CourseInfo from '../CourseDetails/CourseInfo';
 

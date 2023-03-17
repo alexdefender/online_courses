@@ -1,6 +1,8 @@
 import api from '@services/request';
 import { isLoading } from '@utils/store';
+import localStore from '@utils/localStore';
 import URLS from '@constants/api';
+import { LOCAL_STORAGE_KEYS } from '@constants';
 
 import { COURSE, COURSES } from '.';
 
@@ -46,4 +48,36 @@ export const getCourses = () => (dispatch, getState) => {
   dispatch(getCoursesStart());
 
   return api.get(URLS.COURSES).then(({ data }) => dispatch(getCoursesSuccess(data)));
+};
+
+export const getCoursesProgress = () => localStore.get(LOCAL_STORAGE_KEYS.COURSE_PROGRESS);
+
+export const getCourseProgress = (id) => {
+  const coursesProgress = getCoursesProgress();
+
+  if (!coursesProgress) {
+    return null;
+  }
+
+  const { data } = coursesProgress;
+
+  return data[id];
+};
+
+export const setCourseProgress = (courseId, values = {}) => {
+  let data = {};
+  const oldCoursesProgress = getCoursesProgress();
+
+  if (oldCoursesProgress) {
+    data = oldCoursesProgress.data;
+  }
+
+  const oldCourseProgress = data[courseId] || {};
+  data[courseId] = { ...oldCourseProgress, ...values };
+
+  localStore.post(LOCAL_STORAGE_KEYS.COURSE_PROGRESS, data);
+  return {
+    type: COURSE.SET_PROGRESS,
+    data,
+  };
 };

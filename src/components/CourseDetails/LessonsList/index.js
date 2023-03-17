@@ -5,15 +5,22 @@ import WrapFlex from '../../section/WrapFlex';
 import Text from '../../text/Text';
 import LessonPreview from './Lesson';
 
-const LessonsList = ({ list }) => {
-  const [openLesson, setOpenLesson] = useState(null);
+const LessonsList = ({ list, progress, onLessonProgress }) => {
+  const { lessonId, lessonPlayedSeconds } = progress;
+  const [openLesson, setOpenLesson] = useState(lessonId);
 
   if (!list) {
     return null;
   }
 
-  const handleChange = (id) => (e, expanded) => {
-    setOpenLesson(expanded ? id : null)
+  const onOpen = ({ id, isLocked, expanded }) => {
+    if (expanded) {
+      setOpenLesson(id);
+      onLessonProgress(!isLocked ? id : null, { playedSeconds: 0 });
+    } else {
+      setOpenLesson(null);
+      onLessonProgress(null, { playedSeconds: 0 });
+    }
   };
 
   return (
@@ -24,9 +31,12 @@ const LessonsList = ({ list }) => {
         <LessonPreview
           key={item.id}
           openId={openLesson}
-          onChange={handleChange}
+          onOpen={onOpen}
+          VideoProps={{
+            onProgress: (values) => onLessonProgress(item.id, values),
+            timeToStart: lessonPlayedSeconds,
+          }}
           {...item}
-
         />
       ))}
     </WrapFlex>
@@ -35,6 +45,8 @@ const LessonsList = ({ list }) => {
 
 LessonsList.propTypes = {
   list: PropTypes.array.isRequired,
+  progress: PropTypes.object.isRequired,
+  onLessonProgress: PropTypes.func.isRequired,
 };
 
 export default LessonsList;

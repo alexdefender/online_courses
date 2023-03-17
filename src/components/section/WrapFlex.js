@@ -12,10 +12,14 @@ const StyledDiv = styled.div`
   flex-wrap: ${({ theme }) => theme.wrap};
 `;
 
-const WrapFlex = ({ gap, direction, justify, align, flex, wrap, children }) => {
+const WrapFlex = ({ gap, direction, justify, align, flex, wrap, children, className }) => {
   const customTheme = { gap, direction, justify, align, wrap, flex };
 
-  return <StyledDiv theme={customTheme}>{children}</StyledDiv>;
+  return (
+    <StyledDiv className={className} theme={customTheme}>
+      {children}
+    </StyledDiv>
+  );
 };
 
 WrapFlex.propTypes = {
@@ -27,6 +31,7 @@ WrapFlex.propTypes = {
   align: PropTypes.string,
   flex: PropTypes.number,
   wrap: PropTypes.string,
+  className: PropTypes.string,
 };
 
 export default WrapFlex;

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import WrapFlex from '../section/WrapFlex';
 import Text from '../text/Text';
 import SafeText from '../text/SafeText';
-import Chip from '../Chip';
+import Chip from '../values/Chip';
 
 const CourseInfo = ({ title, content }) => {
   if (!content) {

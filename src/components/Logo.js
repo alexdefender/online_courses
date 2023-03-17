@@ -17,7 +17,7 @@ const Logo = () => (
   <LinkWrap href={ROUTES.HOME}>
     <WrapFlex gap="16px" align="center">
       <StyledSchoolIcon fontSize="large" />
-      <Text tid="HEADER.APP_NAME" h5 color={theme.palette.common.white} />
+      <Text tid="MAIN.APP_NAME" h5 color={theme.palette.common.white} />
     </WrapFlex>
   </LinkWrap>
 );

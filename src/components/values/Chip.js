@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Chip from '@mui/material/Chip';
 
-import SafeText from './text/SafeText';
+import SafeText from '../text/SafeText';
 
 const ChipComponent = ({ label, LabelProps, ...props }) => (
   <Chip label={<SafeText content={label} {...LabelProps} />} {...props} />
