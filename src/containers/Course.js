@@ -9,7 +9,8 @@ import { CourseDetails } from '@components';
 
 const CourseDetailsContainer = ({ isHasData, data, progress, dispatch }) => {
   const router = useRouter();
-  const { id } = router.query;
+  const { pathname, asPath, query } = router;
+  const { id } = query;
   const courseProgress = progress[id] || {};
 
   const setProgress = (values = {}) => {
@@ -21,19 +22,28 @@ const CourseDetailsContainer = ({ isHasData, data, progress, dispatch }) => {
 
     const progress = getCourseProgress(id) || {};
     setProgress(progress);
-
+    console.log(progress)
     return () => {
       dispatch(resetCourse());
     };
   }, []);
 
-  return <CourseDetails data={data} loading={!isHasData} progress={courseProgress} onProgress={setProgress} />;
+  // update page title and description
+  useEffect(() => {
+    if (isHasData) {
+      const { title, description } = data;
+      router.replace({ pathname, query: { title, description } }, asPath, { shallow: true });
+    }
+  }, [isHasData]);
+
+  return <CourseDetails data={data} loading={!isHasData || !progress.hasData} progress={courseProgress} onProgress={setProgress} />;
 };
 
 CourseDetailsContainer.propTypes = {
   dispatch: PropTypes.func.isRequired,
   isHasData: PropTypes.bool.isRequired,
   data: PropTypes.object.isRequired,
+  progress: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = ({ course: { data, progress } }) => ({

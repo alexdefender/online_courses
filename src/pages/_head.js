@@ -2,13 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
 import { useTranslation } from 'react-i18next';
+import { useRouter } from 'next/router';
 
 const MyHead = ({ id, title, description, image, keywords }) => {
   const { t } = useTranslation();
+  const router = useRouter();
+  const { query } = router;
+
   const getDefaultMeta = (prop) => (id ? t(`META.${id}.${prop}`) : t('META.DEFAULT'));
 
-  const _title = title || getDefaultMeta('TITLE');
-  const _description = description || getDefaultMeta('DESCRIPTION');
+  const _title = query.title || title || getDefaultMeta('TITLE');
+  const _description = query.description || description || getDefaultMeta('DESCRIPTION');
 
   return (
     <Head>

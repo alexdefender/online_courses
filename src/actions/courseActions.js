@@ -74,6 +74,7 @@ export const setCourseProgress = (courseId, values = {}) => {
     data = oldCoursesProgress.data;
   }
 
+  data.hasData = true;
   const oldCourseProgress = data[courseId] || {};
   data[courseId] = { ...oldCourseProgress, ...values };
 
