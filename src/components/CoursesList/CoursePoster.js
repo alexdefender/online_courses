@@ -35,7 +35,7 @@ const CoursePoster = ({ imageLink, videoLink }) => {
   return (
     <StyledDiv onMouseOver={onFocus} onMouseLeave={onBlur}>
       <Image url={imageLink} bg alt="" style={visible(!focused)} />
-      <Video url={videoLink} muted playing={focused} controls={false} style={visible(focused)} />
+      <Video url={videoLink} muted controls={false} playing={focused} style={visible(focused)} />
     </StyledDiv>
   );
 };

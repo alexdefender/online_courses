@@ -6,7 +6,7 @@ import Text from '../../text/Text';
 import LessonPreview from './Lesson';
 
 const LessonsList = ({ list, progress, onLessonProgress }) => {
-  const { lessonId, lessonPlayedSeconds } = progress;
+  const { lessonId, lessonStartPosition } = progress;
   const [openLesson, setOpenLesson] = useState(lessonId);
 
   if (!list) {
@@ -16,10 +16,10 @@ const LessonsList = ({ list, progress, onLessonProgress }) => {
   const onOpen = ({ id, isLocked, expanded }) => {
     if (expanded) {
       setOpenLesson(id);
-      onLessonProgress(!isLocked ? id : null, { playedSeconds: 0 });
+      onLessonProgress(!isLocked ? id : null, { startPosition: 0 });
     } else {
       setOpenLesson(null);
-      onLessonProgress(null, { playedSeconds: 0 });
+      onLessonProgress(null, { startPosition: 0 });
     }
   };
 
@@ -34,7 +34,7 @@ const LessonsList = ({ list, progress, onLessonProgress }) => {
           onOpen={onOpen}
           VideoProps={{
             onProgress: (values) => onLessonProgress(item.id, values),
-            timeToStart: lessonPlayedSeconds,
+            startPosition: lessonStartPosition,
           }}
           {...item}
         />

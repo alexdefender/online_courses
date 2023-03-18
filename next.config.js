@@ -1,13 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // async rewrites() {
-  //   return [
-  //     {
-  //       source: '/api/:path*',
-  //       destination: 'http://api.wisey.app/api/v1/:path*',
-  //     },
-  //   ]
-  // },
+  i18n: {
+    locales: ['en'],
+    defaultLocale: 'en',
+  },
 };
 
 module.exports = nextConfig;

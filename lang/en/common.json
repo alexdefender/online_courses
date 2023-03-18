@@ -1,4 +1,5 @@
 {
-  "SPEED": "Speed",
+  "VIDEO_SPEED": "Speed: {{value}} ",
+  "VIDEO_SPEED_TIP": "(Please use Shift+> for speed up or Shift+< for speed down)",
   "VIDEO_ERROR": "Video error"
 }

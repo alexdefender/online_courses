@@ -15,24 +15,24 @@ const CourseDetails = ({ data, loading, progress, onProgress }) => {
   }
 
   const { title, description, lessonsCount, lessons, skills, rating, videoLink } = data;
-  const { videoPlayedSeconds } = progress;
+  const { videoStartPosition } = progress;
 
   const onVideoProgress = (values = {}) => {
-    const { playedSeconds } = values;
+    const { startPosition } = values;
 
-    onProgress({ videoPlayedSeconds: playedSeconds });
+    onProgress({ videoStartPosition: startPosition });
   };
 
   const onLessonProgress = (lessonId, values = {}) => {
-    const { playedSeconds } = values;
+    const { startPosition } = values;
 
-    onProgress({ lessonId, lessonPlayedSeconds: playedSeconds });
+    onProgress({ lessonId, lessonStartPosition: startPosition });
   };
 
   return (
     <WrapFlex gap={16} direction="column">
       <SafeText content={title} h4 />
-      <Video url={videoLink} hasSpeed timeToStart={videoPlayedSeconds} onProgress={onVideoProgress} />
+      <Video url={videoLink} hasSpeed startPosition={videoStartPosition} onProgress={onVideoProgress} />
       <CourseInfo title="COURSE.DESCRIPTION" content={description} />
       <CourseInfo title="COURSE.RATING" content={rating} />
       <CourseInfo title="COURSE.LESSONS_COUNT" content={lessonsCount} />

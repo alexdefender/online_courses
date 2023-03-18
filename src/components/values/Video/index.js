@@ -1,10 +1,10 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-import ReactPlayer from 'react-player';
+import Hls from 'hls.js';
 import styled from '@emotion/styled';
 
 import WrapFlex from '../../section/WrapFlex';
-import SpeedButtons from './SpeedButtons';
+import VideoSpeed from './VideoSpeed';
 import VideoError from './Error';
 
 const PlayerWrap = styled(WrapFlex)(({ theme }) => ({
@@ -12,54 +12,99 @@ const PlayerWrap = styled(WrapFlex)(({ theme }) => ({
   border: `1px solid ${theme.palette.primary.dark}`,
 }));
 
-const Video = ({ url, controls, muted, playing, hasSpeed, timeToStart, width, height, onProgress, style }) => {
-  const [speed, setSpeed] = useState(1);
+const Video = ({ url, controls, muted, playing, hasSpeed, startPosition, width, style, onProgress }) => {
+  const videoRef = useRef();
   const [error, setError] = useState(false);
-  const playerRef = useRef(null);
 
-  const onReady = () => {
-    playerRef.current.seekTo(timeToStart, 'seconds');
+  const _onProcess = (data) => {
+    const { start } = data;
+
+    if (onProgress) onProgress({ startPosition: Math.floor(start) });
   };
 
-  const onError = () => {
-    setError(true);
-  };
+  useEffect(() => {
+    let hls = null;
 
-  const onSpeedBtnClick = (newSpeed) => {
-    setSpeed(newSpeed);
-  };
+    const _initPlayer = () => {
+      if (hls !== null) {
+        hls.destroy();
+      }
+
+      const newHls = new Hls({ startPosition });
+
+      if (videoRef.current !== null) {
+        newHls.attachMedia(videoRef.current);
+      }
+
+      newHls.on(Hls.Events.MEDIA_ATTACHED, () => {
+        newHls.loadSource(url);
+      });
+
+      newHls.on(Hls.Events.ERROR, (e, data) => {
+        if (data.fatal) {
+          switch (data.type) {
+            case Hls.ErrorTypes.NETWORK_ERROR:
+              setError(true);
+              break;
+            default:
+              _initPlayer();
+              break;
+          }
+        }
+      });
+
+      newHls.on(Hls.Events.FRAG_CHANGED, (e, { frag }) => {
+        _onProcess(frag);
+      });
+
+      hls = newHls;
+    };
+
+    if (Hls.isSupported()) {
+      _initPlayer();
+    }
+
+    return () => {
+      if (hls !== null) {
+        hls.destroy();
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!videoRef.current || typeof playing !== 'boolean') {
+      return;
+    }
+
+    if (playing) {
+      videoRef.current.play();
+    } else {
+      videoRef.current.pause();
+    }
+  }, [videoRef, playing]);
 
   if (!url || error) {
     return <VideoError />;
   }
 
-  const player = (
-    <ReactPlayer
-      ref={playerRef}
-      playbackRate={speed}
-      {...{ url, width, height, controls, muted, playing, onProgress, onReady, onError, style }}
-    />
-  );
+  const videoComponent = <video ref={videoRef} {...{ controls, width, muted, style }} />;
 
   if (hasSpeed) {
     return (
       <PlayerWrap gap={16} direction="column" style={style}>
-        {player}
-        <SpeedButtons active={speed} onClick={onSpeedBtnClick} />
+        {videoComponent}
+        <VideoSpeed videoRef={videoRef} />
       </PlayerWrap>
     );
   }
 
-  return player;
+  return videoComponent;
 };
 
 Video.defaultProps = {
   controls: true,
-  muted: false,
-  playing: false,
-  timeToStart: 0,
+  startPosition: 0,
   width: '100%',
-  height: 'fit-content',
 };
 
 Video.propTypes = {
@@ -68,9 +113,8 @@ Video.propTypes = {
   muted: PropTypes.bool,
   playing: PropTypes.bool,
   hasSpeed: PropTypes.bool,
-  timeToStart: PropTypes.number,
+  startPosition: PropTypes.number,
   width: PropTypes.string,
-  height: PropTypes.string,
   style: PropTypes.object,
   onProgress: PropTypes.func,
 };
