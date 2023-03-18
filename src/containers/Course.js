@@ -2,10 +2,13 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
 import { connect } from 'react-redux';
+import { compose } from 'redux';
 
 import { getCourse, resetCourse, setCourseProgress, getCourseProgress } from '@actions/courseActions';
 import { hasData, getData } from '@utils/store';
 import { CourseDetails } from '@components';
+
+import { withError } from '@hocs';
 
 const CourseDetailsContainer = ({ isHasData, data, progress, dispatch }) => {
   const router = useRouter();
@@ -22,7 +25,7 @@ const CourseDetailsContainer = ({ isHasData, data, progress, dispatch }) => {
 
     const progress = getCourseProgress(id) || {};
     setProgress(progress);
-    console.log(progress)
+
     return () => {
       dispatch(resetCourse());
     };
@@ -36,7 +39,14 @@ const CourseDetailsContainer = ({ isHasData, data, progress, dispatch }) => {
     }
   }, [isHasData]);
 
-  return <CourseDetails data={data} loading={!isHasData || !progress.hasData} progress={courseProgress} onProgress={setProgress} />;
+  return (
+    <CourseDetails
+      data={data}
+      loading={!isHasData || !progress.hasData}
+      progress={courseProgress}
+      onProgress={setProgress}
+    />
+  );
 };
 
 CourseDetailsContainer.propTypes = {
@@ -52,4 +62,4 @@ const mapStateToProps = ({ course: { data, progress } }) => ({
   progress,
 });
 
-export default connect(mapStateToProps)(CourseDetailsContainer);
+export default compose(withError, connect(mapStateToProps))(CourseDetailsContainer);

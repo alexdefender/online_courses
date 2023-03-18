@@ -4,6 +4,7 @@ import localStore from '@utils/localStore';
 import URLS from '@constants/api';
 import { LOCAL_STORAGE_KEYS } from '@constants';
 
+import { getDataFail } from './layoutActions';
 import { COURSE, COURSES } from '.';
 
 const getCourseStart = () => ({
@@ -24,7 +25,10 @@ export const getCourse = (id) => (dispatch) => {
 
   const url = URLS.COURSE(id);
 
-  return api.get(url).then(({ data }) => dispatch(getCourseSuccess(data)));
+  return api
+    .get(url)
+    .then(({ data }) => dispatch(getCourseSuccess(data)))
+    .catch(() => dispatch(getDataFail()));
 };
 
 const getCoursesStart = () => ({
@@ -49,7 +53,10 @@ export const getCourses = () => (dispatch, getState) => {
 
   dispatch(getCoursesStart());
 
-  return api.get(URLS.COURSES).then(({ data }) => dispatch(getCoursesSuccess(data, pagination)));
+  return api
+    .get(URLS.COURSES)
+    .then(({ data }) => dispatch(getCoursesSuccess(data, pagination)))
+    .catch(() => dispatch(getDataFail()));
 };
 
 export const getCoursesProgress = () => localStore.get(LOCAL_STORAGE_KEYS.COURSE_PROGRESS);

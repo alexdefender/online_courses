@@ -1,10 +1,13 @@
 import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { compose } from 'redux';
 
 import { getCourses } from '@actions/courseActions';
 import { hasData, getData } from '@utils/store';
 import { CoursesList } from '@components';
+
+import { withError } from '@hocs';
 
 import Pagination from './Pagination';
 
@@ -38,4 +41,4 @@ const mapStateToProps = ({ courses: { list }, pagination: { page } }) => ({
   page,
 });
 
-export default connect(mapStateToProps)(Courses);
+export default compose(withError, connect(mapStateToProps))(Courses);
