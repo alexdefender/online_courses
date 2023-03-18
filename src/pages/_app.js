@@ -13,6 +13,7 @@ export default withRedux(initStore, { debug: false })(
     static async getInitialProps(appContext) {
       const { Component, ctx } = appContext;
       const pageProps = Component.getInitialProps ? await Component.getInitialProps(ctx) : {};
+      await i18n.changeLanguage('en');
 
       return { pageProps };
     }
