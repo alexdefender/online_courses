@@ -17,7 +17,7 @@ const coursesReducer = (state = initialState, action) => {
     case COURSES.GET_SUCCESS:
       return {
         ...state,
-        list: getReadyState(performCoursesList(action.data)),
+        list: getReadyState(performCoursesList(action.data, action.pagination)),
       };
 
     default:

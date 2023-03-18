@@ -41,8 +41,26 @@ export const performCourse = (raw) => {
   };
 };
 
-export const performCoursesList = (raw = {}) => {
+export const performCoursesList = (raw = {}, pagination) => {
   const { courses } = raw;
 
-  return courses.map((course) => performCourse(course));
+  if (courses.length === 0) {
+    return [];
+  }
+
+  const list = [[]];
+  const { perPage } = pagination;
+
+  courses.forEach((course) => {
+    const performedCourse = performCourse(course);
+    const lastElement = list[list.length - 1];
+
+    if (lastElement.length < perPage) {
+      lastElement.push(performedCourse);
+    } else {
+      list.push([performedCourse]);
+    }
+  });
+
+  return list;
 };

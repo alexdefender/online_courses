@@ -1,4 +1,5 @@
 export { default as Logo } from './Logo';
+export { default as Pagination } from './Pagination';
 
 export { default as Container } from './section/Container';
 export { default as AppBar } from './section/AppBar';

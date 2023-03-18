@@ -9,3 +9,7 @@ export const COURSE = {
   SET_PROGRESS: 'COURSE.SET_PROGRESS',
   RESET: 'COURSE.RESET',
 };
+
+export const PAGINATION = {
+  SET_PAGE: 'PAGINATION.SET_PAGE',
+};

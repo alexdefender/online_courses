@@ -2,5 +2,6 @@
   "DESCRIPTION": "Description:",
   "LESSONS_COUNT": "Lessons count:",
   "SKILLS": "Skills:",
-  "RATING": "Rating:"
+  "RATING": "Rating:",
+  "EMPTY_LIST": "Empty courses list"
 }

@@ -4,10 +4,15 @@ import PropTypes from 'prop-types';
 import Wrap from './Wrap';
 import CoursePreview from './Course';
 import Loader from './Loader';
+import EmptyList from './Empty';
 
 const CoursesList = ({ list, loading }) => {
   if (loading) {
     return <Loader />;
+  }
+
+  if (list.length === 0) {
+    return <EmptyList />
   }
 
   return (
@@ -17,6 +22,10 @@ const CoursesList = ({ list, loading }) => {
       ))}
     </Wrap>
   );
+};
+
+CoursesList.defaultProps = {
+  list: [],
 };
 
 CoursesList.propTypes = {

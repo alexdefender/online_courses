@@ -31,14 +31,16 @@ const getCoursesStart = () => ({
   type: COURSES.GET_START,
 });
 
-const getCoursesSuccess = (data) => ({
+const getCoursesSuccess = (data, pagination) => ({
   type: COURSES.GET_SUCCESS,
   data,
+  pagination,
 });
 
 export const getCourses = () => (dispatch, getState) => {
   const {
     courses: { list },
+    pagination,
   } = getState();
 
   if (isLoading(list)) {
@@ -47,7 +49,7 @@ export const getCourses = () => (dispatch, getState) => {
 
   dispatch(getCoursesStart());
 
-  return api.get(URLS.COURSES).then(({ data }) => dispatch(getCoursesSuccess(data)));
+  return api.get(URLS.COURSES).then(({ data }) => dispatch(getCoursesSuccess(data, pagination)));
 };
 
 export const getCoursesProgress = () => localStore.get(LOCAL_STORAGE_KEYS.COURSE_PROGRESS);

@@ -7,3 +7,5 @@ export const getAuthToken = () => {
 
   return `Bearer ${token}`;
 };
+
+export const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
