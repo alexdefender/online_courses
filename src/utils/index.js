@@ -1,3 +1,5 @@
+export const getStaticAssetPath = (name, folder = 'images') => `/static/${folder}/${name}`;
+
 export const getAuthToken = () => {
   const header = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9';
   const body =
