@@ -51,7 +51,7 @@ export const performCoursesList = (raw = {}, pagination) => {
   const list = [[]];
   const { perPage } = pagination;
 
-  courses.forEach((course) => {
+  courses.reverse().forEach((course) => {
     const performedCourse = performCourse(course);
     const lastElement = list[list.length - 1];
 
