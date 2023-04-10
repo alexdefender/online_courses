@@ -1,33 +1,32 @@
 import React from 'react';
 import App from 'next/app';
-import withRedux from 'next-redux-wrapper';
-import { Provider as ReduxProvider } from 'react-redux';
+import { createWrapper } from 'next-redux-wrapper';
 import { ThemeProvider } from '@mui/material/styles';
 
 import i18n from '@services/i18n';
-import initStore from '@services/redux';
+import store from '@services/store';
 import theme from '@theme';
 
-export default withRedux(initStore, { debug: false })(
-  class MyApp extends App {
-    static async getInitialProps(appContext) {
-      const { Component, ctx } = appContext;
-      const pageProps = Component.getInitialProps ? await Component.getInitialProps(ctx) : {};
-      await i18n.changeLanguage('en');
+export const wrapper = createWrapper(store, { debug: false });
 
-      return { pageProps };
-    }
+class MyApp extends App {
+  static getInitialProps = wrapper.getInitialAppProps((appStore) => async ({ Component, ctx }) => {
+    const pageProps = Component.getInitialProps ? await Component.getInitialProps({ ...ctx, store: appStore }) : {};
 
-    render() {
-      const { Component, pageProps, store } = this.props;
+    await i18n.changeLanguage('en');
 
-      return (
-        <ReduxProvider store={store}>
-          <ThemeProvider theme={theme}>
-            <Component {...pageProps} />
-          </ThemeProvider>
-        </ReduxProvider>
-      );
-    }
-  },
-);
+    return { pageProps };
+  });
+
+  render() {
+    const { Component, pageProps } = this.props;
+
+    return (
+      <ThemeProvider theme={theme}>
+        <Component {...pageProps} />
+      </ThemeProvider>
+    );
+  }
+}
+
+export default wrapper.withRedux(MyApp);

@@ -18,10 +18,10 @@ const CoursePage = ({ title, description }) => (
   </Page>
 );
 
-CoursePage.getInitialProps = async ({ store, query, isServer }) => {
+CoursePage.getInitialProps = async ({ store, query, req }) => {
   const { id } = query;
 
-  if (isServer) {
+  if (req) {
     await store.dispatch(getCourse(id));
   }
 
