@@ -1,5 +1,11 @@
 {
   "VIDEO_SPEED": "Speed: {{value}} ",
   "VIDEO_SPEED_TIP": "(Please use Shift+> for speed up or Shift+< for speed down)",
-  "VIDEO_ERROR": "Video error"
+  "VIDEO_ERROR": "Video error",
+
+  "NETWORK_ERROR": {
+    "TITLE": "If you see error, please try this:",
+    "ITEM_1": "Install browser extension: ",
+    "ITEM_2": "Reload page"
+  }
 }

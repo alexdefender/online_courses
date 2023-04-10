@@ -4,13 +4,14 @@ import styled from '@emotion/styled';
 
 import { redirect } from '@utils/navigation';
 
-const StyledA = styled.a({
+const StyledA = styled.a(({ underline }) => ({
   textDecoration: 'none',
   cursor: 'pointer',
-});
+  textDecoration: underline ? 'underline' : null,
+}));
 
-const LinkWrap = ({ href, hrefAs, target, children }) => {
-  const hrefProps = target ? { target, rel: 'noopener noreferrer' } : {};
+const LinkWrap = ({ href, hrefAs, target, nofollow, underline, children }) => {
+  const hrefProps = target ? { target, rel: `noopener noreferrer${nofollow ? ' nofollow' : ''}` } : {};
 
   if (href) {
     return (
@@ -22,6 +23,7 @@ const LinkWrap = ({ href, hrefAs, target, children }) => {
             redirect(href, hrefAs);
           }
         }}
+        underline={underline}
         {...hrefProps}
       >
         {children}
@@ -36,6 +38,8 @@ LinkWrap.propTypes = {
   href: PropTypes.string,
   hrefAs: PropTypes.string,
   target: PropTypes.string,
+  nofollow: PropTypes.bool,
+  underline: PropTypes.bool,
   children: PropTypes.node,
 };
 
