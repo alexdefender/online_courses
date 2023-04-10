@@ -5,7 +5,7 @@
 
   "NETWORK_ERROR": {
     "TITLE": "If you see error, please try this:",
-    "ITEM_1": "Install browser extension: ",
+    "ITEM_1": "Install browser extension and turn on it: ",
     "ITEM_2": "Reload page"
   }
 }
