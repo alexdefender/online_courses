@@ -1,4 +1,4 @@
-import { PAGINATION } from '@actions';
+import { PAGINATION } from '@constants/actions';
 
 const initialState = {
   page: 1,

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { getAuthToken } from '@utils';
-import { API_HOST, API_VERSION, AUTH_HEADER } from '@constants';
+import { API_HOST, API_VERSION, AUTH_HEADER } from '@constants/api';
 
 const baseURL = `${API_HOST}/${API_VERSION}`;
 

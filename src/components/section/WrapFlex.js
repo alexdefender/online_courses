@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 
-const StyledDiv = styled.div(({ gap, direction, justify, align, wrap, flex }) => ({
+const Wrap = styled.div(({ gap, direction, justify, align, wrap, flex }) => ({
   display: 'flex',
   gap: gap ? `${gap}px` : null,
   flexDirection: direction,
@@ -13,9 +13,9 @@ const StyledDiv = styled.div(({ gap, direction, justify, align, wrap, flex }) =>
 }));
 
 const WrapFlex = ({ gap, direction, justify, align, flex, wrap, children, className }) => (
-  <StyledDiv {...{ gap, direction, justify, align, wrap, flex }} className={className}>
+  <Wrap {...{ gap, direction, justify, align, wrap, flex }} className={className}>
     {children}
-  </StyledDiv>
+  </Wrap>
 );
 
 WrapFlex.propTypes = {

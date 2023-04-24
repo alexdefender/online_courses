@@ -8,7 +8,7 @@ import LinkWrap from './LinkWrap';
 import Text from './text/Text';
 import SafeText from './text/SafeText';
 
-const StyledUl = styled.ul(({ theme }) => ({
+const StyledList = styled.ul(({ theme }) => ({
   paddingLeft: theme.spacing(2),
 }));
 
@@ -16,7 +16,7 @@ const NetworkError = () => (
   <WrapFlex gap={8} direction="column">
     <Text h6 tid="COMMON.NETWORK_ERROR.TITLE" />
 
-    <StyledUl>
+    <StyledList>
       <li>
         <Text tid="COMMON.NETWORK_ERROR.ITEM_1" />
         <LinkWrap href={CORS_EXTENSION_URL} target="_blank" nofollow underline>
@@ -26,7 +26,7 @@ const NetworkError = () => (
       <li>
         <Text tid="COMMON.NETWORK_ERROR.ITEM_2" />
       </li>
-    </StyledUl>
+    </StyledList>
   </WrapFlex>
 );
 

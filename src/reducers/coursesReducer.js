@@ -1,6 +1,6 @@
-import { COURSES } from '@actions';
 import { getLoadingState, getReadyState } from '@utils/store';
 import { performCoursesList } from '@utils/api/course';
+import { COURSES } from '@constants/actions';
 
 const initialState = {
   list: {},

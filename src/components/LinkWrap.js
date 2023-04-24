@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 
 import { redirect } from '@utils/navigation';
 
-const StyledA = styled.a(({ underline }) => ({
+const StyledLink = styled.a(({ underline }) => ({
   textDecoration: 'none',
   cursor: 'pointer',
   textDecoration: underline ? 'underline' : null,
@@ -15,7 +15,7 @@ const LinkWrap = ({ href, hrefAs, target, nofollow, underline, children }) => {
 
   if (href) {
     return (
-      <StyledA
+      <StyledLink
         href={href}
         onClick={(e) => {
           if (!target) {
@@ -27,7 +27,7 @@ const LinkWrap = ({ href, hrefAs, target, nofollow, underline, children }) => {
         {...hrefProps}
       >
         {children}
-      </StyledA>
+      </StyledLink>
     );
   }
 

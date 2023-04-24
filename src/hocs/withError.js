@@ -1,4 +1,4 @@
-import { Component, createElement } from 'react';
+import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
@@ -7,23 +7,19 @@ import { resetDataFail } from '@actions/layoutActions';
 import { NotFound } from '@components';
 
 const withError = (WrappedComponent) => {
-  class HOComponent extends Component {
-    componentWillUnmount() {
-      const { dispatch } = this.props;
+  const HOComponent = ({ isError, dispatch, ...props }) => {
+    useEffect(() => {
+      return () => {
+        dispatch(resetDataFail());
+      };
+    }, []);
 
-      dispatch(resetDataFail());
+    if (isError) {
+      return <NotFound />;
     }
 
-    render() {
-      const { isError, ...props } = this.props;
-
-      return isError
-        ? createElement(NotFound)
-        : createElement(WrappedComponent, {
-            ...props,
-          });
-    }
-  }
+    return <WrappedComponent {...props} />;
+  };
 
   const mapStateToProps = ({ layout: { isError } }) => ({ isError });
 

@@ -17,12 +17,11 @@ const VideoSpeed = ({ videoRef }) => {
   const [speed, setSpeed] = useState(1);
 
   const handleKeyPress = ({ keyCode }) => {
-    // up speed
     if (keyCode === 62 && videoRef.current.playbackRate < MAX_SPEED) {
       videoRef.current.playbackRate += SPEED_STEP;
       setSpeed(videoRef.current.playbackRate);
     }
-    // down speed
+    
     if (keyCode === 60 && videoRef.current.playbackRate > MIN_SPEED) {
       videoRef.current.playbackRate -= SPEED_STEP;
       setSpeed(videoRef.current.playbackRate);

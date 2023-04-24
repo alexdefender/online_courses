@@ -7,7 +7,6 @@
     "baseUrl": "./",
     "paths": {
       "@actions/*": ["src/actions/*"],
-      "@actions": ["src/actions/index.js"],
       "@components/*": ["src/components/*"],
       "@components": ["src/components/index.js"],
       "@containers/*": ["src/containers/*"],

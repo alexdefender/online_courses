@@ -1,5 +1,5 @@
 import React from 'react';
-import App from 'next/app';
+import PropTypes from 'prop-types';
 import { createWrapper } from 'next-redux-wrapper';
 import { ThemeProvider } from '@mui/material/styles';
 
@@ -9,24 +9,23 @@ import theme from '@theme';
 
 export const wrapper = createWrapper(store, { debug: false });
 
-class MyApp extends App {
-  static getInitialProps = wrapper.getInitialAppProps((appStore) => async ({ Component, ctx }) => {
-    const pageProps = Component.getInitialProps ? await Component.getInitialProps({ ...ctx, store: appStore }) : {};
+const MyApp = ({ Component, pageProps }) => (
+  <ThemeProvider theme={theme}>
+    <Component {...pageProps} />
+  </ThemeProvider>
+);
 
-    await i18n.changeLanguage('en');
+MyApp.getInitialProps = wrapper.getInitialAppProps((appStore) => async ({ Component, ctx }) => {
+  const pageProps = Component.getInitialProps ? await Component.getInitialProps({ ...ctx, store: appStore }) : {};
 
-    return { pageProps };
-  });
+  await i18n.changeLanguage('en');
 
-  render() {
-    const { Component, pageProps } = this.props;
+  return { pageProps };
+});
 
-    return (
-      <ThemeProvider theme={theme}>
-        <Component {...pageProps} />
-      </ThemeProvider>
-    );
-  }
-}
+MyApp.propTypes = {
+  Component: PropTypes.elementType,
+  pageProps: PropTypes.object,
+};
 
 export default wrapper.withRedux(MyApp);

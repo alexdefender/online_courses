@@ -4,8 +4,9 @@ import PropTypes from 'prop-types';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+
 import Text from '../text/Text';
-import ExpandMoreIcon from '../icons/ExpandMoreIcon';
 
 const DetailsCollapsable = ({ id, openId, title, TitleProps, children, onChange }) => (
   <Accordion disableGutters expanded={id === openId} onChange={onChange}>

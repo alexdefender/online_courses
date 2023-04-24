@@ -2,10 +2,10 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { useRouter } from 'next/router';
+import Pagination from '@mui/material/Pagination';
 
 import { setPaginationPage } from '@actions/paginationActions';
 import { scrollToTop } from '@utils';
-import { Pagination } from '@components';
 
 const PaginationContainer = ({ page, pageCount, dispatch }) => {
   const router = useRouter();

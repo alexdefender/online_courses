@@ -1,4 +1,4 @@
-import { LAYOUT } from '.';
+import { LAYOUT } from '@constants/actions';
 
 export const getDataFail = () => ({
   type: LAYOUT.DATA_FAIL,

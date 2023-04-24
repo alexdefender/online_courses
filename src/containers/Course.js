@@ -31,7 +31,6 @@ const CourseDetailsContainer = ({ isHasData, data, progress, dispatch }) => {
     };
   }, []);
 
-  // update page title and description
   useEffect(() => {
     if (isHasData) {
       const { title, description } = data;
@@ -61,5 +60,7 @@ const mapStateToProps = ({ course: { data, progress } }) => ({
   data: getData(data),
   progress,
 });
+
+CourseDetailsContainer.displayName = 'CourseDetailsContainer';
 
 export default compose(withError, connect(mapStateToProps))(CourseDetailsContainer);

@@ -3,9 +3,9 @@ import { isLoading } from '@utils/store';
 import localStore from '@utils/localStore';
 import URLS from '@constants/api';
 import { LOCAL_STORAGE_KEYS } from '@constants';
+import { COURSE, COURSES } from '@constants/actions';
 
 import { getDataFail } from './layoutActions';
-import { COURSE, COURSES } from '.';
 
 const getCourseStart = () => ({
   type: COURSE.GET_START,

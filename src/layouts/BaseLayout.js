@@ -1,7 +1,8 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import Container from '@mui/material/Container';
 
-import { Container, Header } from '@components';
+import { Header } from '@components';
 
 const BaseLayout = ({ children }) => (
   <Fragment>

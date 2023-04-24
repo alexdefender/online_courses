@@ -1,4 +1,4 @@
-import { LAYOUT } from '@actions';
+import { LAYOUT } from '@constants/actions';
 
 const initialState = {
   isError: false,

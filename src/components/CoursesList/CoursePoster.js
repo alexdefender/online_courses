@@ -5,7 +5,7 @@ import styled from '@emotion/styled';
 import Image from '../values/Image';
 import Video from '../values/Video';
 
-const StyledDiv = styled.div({
+const Wrap = styled.div({
   position: 'relative',
   height: 300,
   maxHeight: 300,
@@ -33,10 +33,10 @@ const CoursePoster = ({ imageLink, videoLink }) => {
   const visible = (value) => (value ? { opacity: 1 } : null);
 
   return (
-    <StyledDiv onMouseOver={onFocus} onMouseLeave={onBlur}>
+    <Wrap onMouseOver={onFocus} onMouseLeave={onBlur}>
       <Image url={imageLink} bg alt="" style={visible(!focused)} />
       <Video url={videoLink} muted controls={false} playing={focused} style={visible(focused)} />
-    </StyledDiv>
+    </Wrap>
   );
 };
 
