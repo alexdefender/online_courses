@@ -43,7 +43,7 @@ const PaginationContainer = (): JSX.Element => {
     return <Fragment />;
   }
 
-  const handleChange = (e: React.ChangeEvent<unknown>, newPage: number): void => {
+  const handleChange = (_e: React.ChangeEvent<unknown>, newPage: number): void => {
     updateUrl(newPage);
     setPage(newPage);
     scrollToTop();

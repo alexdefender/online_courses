@@ -44,7 +44,7 @@ const LessonPreview = ({
     content = <Video url={videoLink} hasSpeed {...VideoProps} />;
   }
 
-  const onLessonChange = (e: SyntheticEvent, expanded: boolean): void => {
+  const onLessonChange = (_e: SyntheticEvent, expanded: boolean): void => {
     onOpen({ id, isLocked, expanded });
   };
 

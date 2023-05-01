@@ -64,7 +64,7 @@ const Video = ({
         if (url) newHls.loadSource(url);
       });
 
-      newHls.on(Hls.Events.ERROR, (e, data) => {
+      newHls.on(Hls.Events.ERROR, (_e, data) => {
         if (data.fatal) {
           switch (data.type) {
             case Hls.ErrorTypes.NETWORK_ERROR:
@@ -77,7 +77,7 @@ const Video = ({
         }
       });
 
-      newHls.on(Hls.Events.FRAG_CHANGED, (e, { frag }) => {
+      newHls.on(Hls.Events.FRAG_CHANGED, (_e, { frag }) => {
         _onProcess(frag);
       });
 

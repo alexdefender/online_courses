@@ -6,7 +6,7 @@ const Elements = Array(4).fill(0);
 
 const CoursesListLoader = (): JSX.Element => (
   <Wrap>
-    {Elements.map((v, i) => (
+    {Elements.map((_v, i) => (
       <CourseCard key={i}>
         <Skeleton variant="rounded" width="80%" height={40} />
         <Skeleton variant="rectangular" width="100%" height={200} />
