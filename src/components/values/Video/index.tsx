@@ -17,7 +17,7 @@ type VideoProps = {
   hasSpeed?: boolean;
   startPosition?: number;
   width?: string;
-  style?: object | undefined;
+  style?: object;
   onProgress?: (values: onProgressValues) => void;
 };
 

@@ -9,6 +9,7 @@ type WrapFlexProps = {
   flex: number | undefined;
   wrap: string | undefined;
   className: string | undefined;
+  style: object | undefined;
   children: ReactNode;
 };
 
@@ -31,8 +32,9 @@ const WrapFlex = ({
   wrap,
   children,
   className,
+  style,
 }: Partial<WrapFlexProps>): JSX.Element => (
-  <Wrap {...{ gap, direction, justify, align, wrap, flex }} className={className}>
+  <Wrap {...{ gap, direction, justify, align, wrap, flex, style }} className={className}>
     {children}
   </Wrap>
 );
