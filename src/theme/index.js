@@ -4,6 +4,7 @@ import MuiContainerTheme from './MuiContainerTheme';
 import MuiToolbarTheme from './MuiToolbarTheme';
 import MuiAppBarTheme from './MuiAppBarTheme';
 import MuiPaginationTheme from './MuiPaginationTheme';
+import MuiCardTheme from './MuiCardTheme';
 
 const theme = createTheme({
   components: {
@@ -11,6 +12,7 @@ const theme = createTheme({
     MuiToolbar: MuiToolbarTheme,
     MuiAppBar: MuiAppBarTheme,
     MuiPagination: MuiPaginationTheme,
+    MuiCard: MuiCardTheme,
   },
 });
 
