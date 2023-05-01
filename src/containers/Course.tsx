@@ -16,15 +16,17 @@ const CourseDetailsContainer = (): JSX.Element => {
   const { data, loading } = course;
   const { pathname, asPath, query } = router;
   const courseId = String(query.id);
-  const hasData = data && progress;
   const courseProgress = progress?.courses?.[courseId];
+  const hasData = !!data;
 
   const setProgress = (values: CourseProgress): void => {
     setCourseProgress(courseId, values);
   };
 
   useEffect(() => {
-    getCourse(courseId);
+    if (!hasData) {
+      getCourse(courseId);
+    }
 
     const progress = getCourseProgress(courseId);
     setProgress(progress);

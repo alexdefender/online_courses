@@ -15,7 +15,7 @@ type CourseDetailsProps = {
   onProgress: (values: CourseProgress) => void;
 };
 
-const CourseDetails = ({ data, progress, onProgress }: CourseDetailsProps): JSX.Element => {
+const CourseDetails = ({ data, progress = {}, onProgress }: CourseDetailsProps): JSX.Element => {
   const { title, description, lessonsCount, lessons, skills, rating, videoLink } = data;
   const { videoStartPosition = 0 } = progress;
 

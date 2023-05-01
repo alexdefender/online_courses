@@ -1,12 +1,13 @@
 import React from 'react';
 import { createWrapper } from 'next-redux-wrapper';
+import { Store } from 'redux';
+import { RootState } from '@reducers';
 import { ThemeProvider } from '@mui/material/styles';
-
 import i18n from '@services/i18n';
 import store from '@services/store';
 import theme from '@theme';
 
-export const wrapper = createWrapper(store, { debug: false });
+export const wrapper = createWrapper<Store<RootState>>(store, { debug: false });
 
 type MyAppProps = {
   Component: React.ComponentType<any>;

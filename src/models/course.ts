@@ -40,6 +40,7 @@ export type CourseState = {
   data: Course | null;
   loading: boolean;
   error: string | null;
+  init: boolean;
 };
 
 type CourseStartAction = {

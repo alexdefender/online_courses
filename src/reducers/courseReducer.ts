@@ -6,12 +6,23 @@ const initialState: CourseState = {
   data: null,
   loading: false,
   error: null,
+  init: false,
 };
 
 const courseReducer = (state = initialState, action: CourseActions): CourseState => {
   switch (action.type) {
     case HYDRATE:
-      return { ...state, ...action.payload.course };
+      const nextState = {
+        ...state,
+        ...action.payload.course,
+      };
+
+      if (!state.init) {
+        nextState.init = true;
+        return nextState;
+      }
+
+      return state;
 
     case COURSE_ACTIONS.GET_START:
       return {
